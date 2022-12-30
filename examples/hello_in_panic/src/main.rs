@@ -1,5 +1,7 @@
 #![feature(extern_types)]
 
+#![deny(warnings)]
+
 #![windows_subsystem="console"]
 #![no_std]
 #![no_main]
