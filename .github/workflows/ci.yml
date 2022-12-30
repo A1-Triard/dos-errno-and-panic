@@ -31,11 +31,11 @@ jobs:
     - run: "echo -n 'linker=\"' >> $HOME/.cargo/config"
     - run: "echo -n \"$PWD\" >> $HOME/.cargo/config"
     - run: "echo '/msvc-wine-rust/linker-scripts/linkx86.sh\"' >> $HOME/.cargo/config"
+    - uses: actions/checkout@v2
     - uses: actions/upload-artifact@v3
       with:
         name: linkx86
         path: /home/runner/work/dos-errno-and-panic/dos-errno-and-panic/msvc-wine-rust/linker-scripts/linkx86.sh
-    - uses: actions/checkout@v2
     - run: "cargo build --verbose"
     - run: "cargo test --verbose --tests"
     - run: "cargo test --verbose --doc"
