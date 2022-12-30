@@ -23,6 +23,7 @@ jobs:
         override: true
     - run: "rustup component add clippy"
     - run: "sudo apt-get install wine"
+    - run: "git clone --depth=1 https://github.com/est31/msvc-wine-rust.git"
     - uses: actions/checkout@v2
     - run: "cargo build --verbose"
     - run: "cargo test --verbose --tests"
