@@ -29,8 +29,7 @@ jobs:
       working-directory: msvc-wine-rust
     - run: "echo '[target.i386-pc-dos-msvc]' > $HOME/.cargo/config"
     - run: "echo -n 'linker=\"' >> $HOME/.cargo/config"
-    - run: "echo -n \"$PWD\" >> $HOME/.cargo/config"
-      working-directory: msvc-wine-rust
+    - run: "echo -n \"${{ env.GITHUB_WORKSPACE }}\" >> $HOME/.cargo/config"
     - run: "echo '/linker-scripts/linkx86.sh\"' >> $HOME/.cargo/config"
     - uses: actions/upload-artifact@v3
       with:
