@@ -24,6 +24,8 @@ jobs:
     - run: "rustup component add clippy"
     - run: "sudo apt-get install wine"
     - run: "git clone --depth=1 https://github.com/est31/msvc-wine-rust.git"
+    - run: "./get.sh licenses-accepted"
+      working-directory: msvc-wine-rust
     - uses: actions/checkout@v2
     - run: "cargo build --verbose"
     - run: "cargo test --verbose --tests"
