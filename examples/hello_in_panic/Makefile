@@ -1,7 +1,7 @@
 WIN_TARGET=i386-pc-dos-msvc
 DOS_TARGET=i386-pc-dos-hxrt
 
-BIN=hello_in_panic
+BIN=hinpan
 
 .PHONY: debug release rund runr clean
 
