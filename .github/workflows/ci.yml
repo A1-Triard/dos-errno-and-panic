@@ -29,6 +29,10 @@ jobs:
       working-directory: ".."
     - run: "./get.sh licenses-accepted"
       working-directory: "../msvc-wine-rust"
+    - run: "sed -i 's|./linker\\.sh|xvfb-run ./linker.sh|' linker-scripts/linkx64.sh"
+      working-directory: "../msvc-wine-rust"
+    - run: "sed -i 's|./linker\\.sh|xvfb-run ./linker.sh|' linker-scripts/linkx86.sh"
+      working-directory: "../msvc-wine-rust"
     - run: "cp msobj140.dll mspdbcore.dll ../x86"
       working-directory: "../msvc-wine-rust/extracted/tools/VC/Tools/MSVC/14.11.25503/bin/Hostx64/x64"
     - run: "cp mspdb140.dll msobj140.dll mspdbcore.dll mspdbsrv.exe ../x64"
@@ -44,5 +48,5 @@ jobs:
     - run: "cargo build --verbose --release"
     - run: "cargo outdated --verbose --aggresssive --root-deps-only --exit-code 1"
     - run: "cargo clippy --verbose"
-    - run: "xvfb-run make"
+    - run: "make"
       working-directory: examples/hello_in_panic
