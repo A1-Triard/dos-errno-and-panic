@@ -33,8 +33,8 @@ jobs:
     - run: "echo '/msvc-wine-rust/linker-scripts/linkx86.sh\"' >> $HOME/.cargo/config"
     - uses: actions/upload-artifact@v3
       with:
-        name: cargo-config
-        path: /home/runner/.cargo/config
+        name: linkx86
+        path: /home/runner/work/dos-errno-and-panic/dos-errno-and-panic/msvc-wine-rust/linker-scripts/linkx86.sh
     - uses: actions/checkout@v2
     - run: "cargo build --verbose"
     - run: "cargo test --verbose --tests"
