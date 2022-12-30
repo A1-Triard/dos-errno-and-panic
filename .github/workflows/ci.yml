@@ -22,7 +22,7 @@ jobs:
         toolchain: nightly
         override: true
     - run: "rustup component add clippy"
-    - run: "apt-get install wine"
+    - run: "sudo apt-get install wine"
     - uses: actions/checkout@v2
     - run: "cargo build --verbose"
     - run: "cargo test --verbose --tests"
