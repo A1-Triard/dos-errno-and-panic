@@ -1,10 +1,20 @@
 [package]
-name = "dos-errno-and-panic"
-version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+name = "dos-errno-and-panic"
+version = "0.0.1"
+#rust-version = "nightly"
+authors = ["warlock <internalmike@gmail.com>"]
+description = "DOS application supplement code: errno and panic handler."
+readme = "README.md"
+documentation = "https://docs.rs/dos-errno-and-panic/"
+keywords = ["errno", "dos", "panic", "app", "no_std"]
+categories = ["os", "no-std"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/A1-Triard/dos-errno-and-panic"
 
 [dependencies]
 exit-no-std = "0.1.4"
 pc-ints = "0.2.0"
+
+[badges]
+maintenance = { status = "experimental" }
