@@ -22,6 +22,7 @@ jobs:
         toolchain: nightly
         override: true
     - run: "rustup component add clippy"
+    - run: "rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu"
     - run: "sudo apt-get install wine msitools"
     - run: "git clone --depth=1 https://github.com/est31/msvc-wine-rust.git"
     - run: "./get.sh licenses-accepted"
