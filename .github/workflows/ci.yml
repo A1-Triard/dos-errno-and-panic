@@ -28,7 +28,13 @@ jobs:
     - run: "./get.sh licenses-accepted"
       working-directory: msvc-wine-rust
     - run: "echo '[target.i386-pc-dos-msvc]' > $HOME/.cargo/config"
-    - run: "echo \"linker=\\\"$PWD/msvc-wine-rust/linker-scripts/linkx86.sh\\\"\" >> $HOME/.cargo/config"
+    - run: "echo -n 'linker=\"' >> $HOME/.cargo/config"
+    - run: "echo -n \"$PWD\" >> $HOME/.cargo/config"
+    - run: "echo '/msvc-wine-rust/linker-scripts/linkx86.sh\" >> $HOME/.cargo/config"
+    - uses: actions/upload-artifact@v3
+      with:
+        name: cargo-config
+        path: /home/runner/.cargo/config
     - uses: actions/checkout@v2
     - run: "cargo build --verbose"
     - run: "cargo test --verbose --tests"
