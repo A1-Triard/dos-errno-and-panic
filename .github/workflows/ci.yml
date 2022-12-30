@@ -29,14 +29,12 @@ jobs:
       working-directory: ".."
     - run: "./get.sh licenses-accepted"
       working-directory: "../msvc-wine-rust"
+    - run: "sed -e 's/wine_exec=${WINE_EXEC:=wine}/wine_exec=${WINE_EXEC:=xvfb-run wine}/' linker-scripts/linker.sh"
+      working-directory: "../msvc-wine-rust"
     - run: "echo '[target.i386-pc-dos-msvc]' > $HOME/.cargo/config"
     - run: "echo -n \"linker=\\\"$PWD/linker-scripts/linkx86.sh\\\"\" >> $HOME/.cargo/config"
       working-directory: "../msvc-wine-rust"
     - uses: actions/checkout@v2
-    - uses: actions/upload-artifact@v3
-      with:
-        name: linkx86
-        path: /home/runner/work/dos-errno-and-panic/msvc-wine-rust/linker-scripts/linkx86.sh
     - run: "cargo build --verbose"
     - run: "cargo test --verbose --tests"
     - run: "cargo test --verbose --doc"
@@ -44,5 +42,5 @@ jobs:
     - run: "cargo build --verbose --release"
     - run: "cargo outdated --verbose --aggresssive --root-deps-only --exit-code 1"
     - run: "cargo clippy --verbose"
-    - run: "xvfb-run make"
+    - run: "make"
       working-directory: examples/hello_in_panic
