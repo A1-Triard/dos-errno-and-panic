@@ -15,9 +15,7 @@ jobs:
   main:
     strategy:
       fail-fast: false
-      matrix:
-        os: ubuntu-latest
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions-rs/toolchain@v1
       with:
