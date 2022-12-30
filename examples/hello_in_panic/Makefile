@@ -54,3 +54,6 @@ target/$(WIN_TARGET)/release: Cargo.toml Cargo.lock src/main.rs build.rs
 	RUSTFLAGS="--cfg custom_errno --cfg dos_errno_and_panic --cfg pc_atomics" \
 		cargo +nightly build --verbose -Z build-std=core,panic_abort -Z build-std-features=panic_immediate_abort --target $(WIN_TARGET).json --release
 	touch target/$(WIN_TARGET)/release
+
+Cargo.lock: Cargo.toml
+	cargo update
