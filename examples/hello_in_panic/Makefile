@@ -3,7 +3,7 @@ DOS_TARGET=i386-pc-dos-hxrt
 
 BIN=hinpan
 
-.PHONY: debug release rund runr clean
+.PHONY: debug release rund runr clean clippy
 
 release debug: %: target/$(DOS_TARGET)/%/$(BIN).exe target/$(DOS_TARGET)/%/CODEPAGE target/$(DOS_TARGET)/%/HDPMI32.EXE target/$(DOS_TARGET)/%/DPMILD32.EXE
 
@@ -54,6 +54,10 @@ target/$(WIN_TARGET)/release: Cargo.toml Cargo.lock src/main.rs build.rs
 	RUSTFLAGS="--cfg custom_errno --cfg dos_errno_and_panic --cfg pc_atomics" \
 		cargo +nightly build --verbose -Z build-std=core,panic_abort -Z build-std-features=panic_immediate_abort --target $(WIN_TARGET).json --release
 	touch target/$(WIN_TARGET)/release
+
+clippy:
+	RUSTFLAGS="--cfg custom_errno --cfg dos_errno_and_panic --cfg pc_atomics" \
+		cargo +nightly clippy --verbose -Z build-std=core,panic_abort -Z build-std-features=panic_immediate_abort --target $(WIN_TARGET).json
 
 Cargo.lock: Cargo.toml
 	cargo update

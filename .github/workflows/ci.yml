@@ -50,3 +50,9 @@ jobs:
     - run: "cargo clippy --verbose"
     - run: "make"
       working-directory: examples/hello_in_panic
+    - run: "make release"
+      working-directory: examples/hello_in_panic
+    - run: "make clippy"
+      working-directory: examples/hello_in_panic
+    - run: "cargo outdated --verbose --aggresssive --root-deps-only --exit-code 1"
+      working-directory: examples/hello_in_panic
