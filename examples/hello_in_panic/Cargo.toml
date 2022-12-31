@@ -16,10 +16,6 @@ strip = true
 
 [dependencies]
 dos-errno-and-panic = { path = "../.." }
-dos-cp = "0.1.2"
 exit-no-std = "0.1.4"
 pc-atomics = "0.0.1"
 rlibc = "1.0.0"
-
-[build-dependencies]
-dos-cp-generator = "0.1.2"

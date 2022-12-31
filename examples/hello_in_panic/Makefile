@@ -45,12 +45,12 @@ HXRT216.zip:
 	wget https://www.japheth.de/Download/HX/HXRT216.zip
 	touch -t 200801011952 HXRT216.zip
 
-target/$(WIN_TARGET)/debug: Cargo.toml Cargo.lock src/main.rs build.rs
+target/$(WIN_TARGET)/debug: Cargo.toml Cargo.lock src/main.rs
 	RUSTFLAGS="--cfg custom_errno --cfg dos_errno_and_panic --cfg pc_atomics" \
 		cargo +nightly build --verbose -Z build-std=core,panic_abort --target $(WIN_TARGET).json
 	touch target/$(WIN_TARGET)/debug
 
-target/$(WIN_TARGET)/release: Cargo.toml Cargo.lock src/main.rs build.rs
+target/$(WIN_TARGET)/release: Cargo.toml Cargo.lock src/main.rs
 	RUSTFLAGS="--cfg custom_errno --cfg dos_errno_and_panic --cfg pc_atomics" \
 		cargo +nightly build --verbose -Z build-std=core,panic_abort -Z build-std-features=panic_immediate_abort --target $(WIN_TARGET).json --release
 	touch target/$(WIN_TARGET)/release
