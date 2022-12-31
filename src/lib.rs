@@ -47,9 +47,9 @@ mod link {
                 c as u8
             };
             if c == b'\n' {
-                let _ = int_21h_ah_40h_write(1, &[b'\r']);
+                int_21h_ah_02h_out_ch(b'\r');
             }
-            let _ = int_21h_ah_40h_write(1, &[c]);
+            int_21h_ah_02h_out_ch(c);
             Ok(())
         }
 
