@@ -48,7 +48,7 @@ jobs:
     - run: "cargo build --verbose --release"
     - run: "cargo outdated --verbose --aggresssive --root-deps-only --exit-code 1"
     - run: "cargo clippy --verbose"
-    - run: "make"
+    - run: "make debug"
       working-directory: examples/hello_in_panic
     - run: "make release"
       working-directory: examples/hello_in_panic
