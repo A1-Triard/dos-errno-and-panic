@@ -1,7 +1,7 @@
 [package]
 edition = "2021"
 name = "dos-errno-and-panic"
-version = "0.0.1"
+version = "0.0.2"
 #rust-version = "nightly"
 authors = ["warlock <internalmike@gmail.com>"]
 description = "DOS application supplement code: errno and panic handler."
@@ -13,8 +13,8 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/A1-Triard/dos-errno-and-panic"
 
 [dependencies]
-exit-no-std = "0.1.4"
-pc-ints = "0.2.0"
+exit-no-std = "0.2.0"
+pc-ints = "0.3.0"
 
 [badges]
 maintenance = { status = "experimental" }
