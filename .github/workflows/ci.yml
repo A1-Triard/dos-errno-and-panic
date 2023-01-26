@@ -46,7 +46,7 @@ jobs:
     - run: "cargo test --verbose --doc"
     - run: "cargo doc --verbose"
     - run: "cargo build --verbose --release"
-    - run: "cargo outdated --verbose --aggresssive --root-deps-only --exit-code 1"
+    - run: "cargo outdated --verbose --root-deps-only --exit-code 1"
     - run: "cargo clippy --verbose"
     - run: "make debug"
       working-directory: examples/hello_in_panic
@@ -54,5 +54,5 @@ jobs:
       working-directory: examples/hello_in_panic
     - run: "make clippy"
       working-directory: examples/hello_in_panic
-    - run: "cargo outdated --verbose --aggresssive --root-deps-only --exit-code 1"
+    - run: "cargo outdated --verbose --root-deps-only --exit-code 1"
       working-directory: examples/hello_in_panic
