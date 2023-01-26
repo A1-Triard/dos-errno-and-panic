@@ -6,23 +6,29 @@
 
 #[cfg(dos_errno_and_panic)]
 mod link {
-    use core::fmt::{self, Formatter};
+    use core::fmt::{self};
+    #[cfg(feature="errno")]
+    use core::fmt::Formatter;
     use core::fmt::Write as fmt_Write;
     use exit_no_std::exit;
     use pc_ints::*;
 
+    #[cfg(feature="errno")]
     static mut ERRNO: i32 = 0;
 
+    #[cfg(feature="errno")]
     #[no_mangle]
     extern "Rust" fn rust_errno() -> i32 {
         unsafe { ERRNO }
     }
 
+    #[cfg(feature="errno")]
     #[no_mangle]
     extern "Rust" fn rust_set_errno(e: i32) {
         unsafe { ERRNO = e; }
     }
 
+    #[cfg(feature="errno")]
     #[no_mangle]
     extern "Rust" fn rust_errno_fmt(e: i32, f: &mut Formatter) -> fmt::Result {
         write!(f, "Error {}", e)
